@@ -1,0 +1,57 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+class MyStack {
+private:
+    stack<int> data;
+
+public:
+    void push(int value) {
+        data.push(value);
+    }
+
+    void pop() {
+        if (!data.empty()) {
+            data.pop();
+        } else {
+            cout << "Stack is empty, cannot pop.\n";
+        }
+    }
+
+    void displayAll() {
+        stack<int> temp = data;
+        cout << "Stack elements: ";
+        while (!temp.empty()) {
+            cout << temp.top() << " ";
+            temp.pop();
+        }
+        cout << std::endl;
+    }
+
+    int top() {
+        if (!data.empty()) {
+            return data.top();
+        } else {
+            cout << "Stack is empty.\n";
+            return -1; // возвращаем значение по умолчанию
+        }
+    }
+};
+
+int main() {
+    MyStack stack;
+
+    stack.push(5);
+    stack.push(10);
+    stack.push(15);
+
+    stack.displayAll();
+
+    cout << "Top element: " << stack.top() << endl;
+
+    stack.pop();
+    stack.displayAll();
+
+    return 0;
+}
